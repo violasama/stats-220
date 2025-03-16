@@ -2,7 +2,7 @@
 
 This is my repo for STATS 220. 
 
-A little about me:
+##A little about me:
 
 - I am undertaking a degree in statistics and information systems
 - I am taking STATS 220 because its a required paper for my degree
