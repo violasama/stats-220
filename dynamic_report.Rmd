@@ -1,0 +1,76 @@
+---
+title: My dynamic report
+output: html_fragment
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE, error=FALSE)
+
+```
+
+```{css}
+h1 {
+  font-family: Arial, sans-serif;
+  color: #2c3e50;
+}
+
+p {
+  font-size: 14px;
+  color: #34495e;
+}
+
+.highlight {
+  background-color: yellow;
+  font-weight: bold;
+}
+
+```
+
+## Exploring Fashion and Analysing Outfit Trends on Campus
+
+
+
+```{r, echo=FALSE}
+#Install Tidyverse Package
+install.packages("tidyverse", repos = "https://cran.rstudio.com/")
+library(tidyverse)
+#Read csv file from url
+logged_data <- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vTaiyabmZjJorR8ryqlC2sLr98SM7Qxn0VGK9j2I_M8DAndctAqJe3nbWLhrCdRCny6bdj2S3gSuGKf/pub?gid=269412432&single=true&output=csv")
+#Rename each variable to make them more meaningful
+latest_data <- logged_data %>%
+  rename(
+         timestamp = "Timestamp",
+         fashionability_rating = "On a scale of 1 to 10, how fashionable would you rate this outfit/group of outfits?",
+         clothing_type = "What kind of clothing are they mostly wearing?",
+         outfit_colours = "What colour/colours are present in their outfit/outfits?"
+    )
+#Summary Statistics:
+min_value <- min(latest_data$fashionability_rating)
+max_value <- max(latest_data$fashionability_rating)
+mean_value <- mean(latest_data$fashionability_rating)
+length_value <- length(latest_data$fashionability_rating)
+#Bar Chart for Clothing Types:
+ggplot(latest_data, aes(x = clothing_type)) +
+  geom_bar() +
+  labs(
+    title = "Distribution of Clothing Types",
+    subtitle = "Showing the frequency of each clothing type in the dataset",
+    x = "Clothing Type", 
+    y = "Count",
+    caption = "Source: Latest Fashion Dataset"
+  )
+#Bar Chart for Outfit Colours
+ggplot(latest_data, aes(x = outfit_colours)) +
+  geom_bar() +
+  labs(
+    title = "Distribution of Outfit Colours",
+    subtitle = "Displaying the occurrence of different colours in the dataset",
+    x = "Outfit Colours", 
+    y = "Count",
+    caption = "Source: Latest Fashion Dataset"
+  )
+```
+
+
+
+![](https://c.tenor.com/-qBsG1HwR4oAAAAC/tenor.gif)
