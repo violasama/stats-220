@@ -31,7 +31,6 @@ p {
 
 
 ```{r, echo=FALSE}
-library(tidyverse)
 #Read csv file from url
 logged_data <- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vTaiyabmZjJorR8ryqlC2sLr98SM7Qxn0VGK9j2I_M8DAndctAqJe3nbWLhrCdRCny6bdj2S3gSuGKf/pub?gid=269412432&single=true&output=csv")
 #Rename each variable to make them more meaningful
